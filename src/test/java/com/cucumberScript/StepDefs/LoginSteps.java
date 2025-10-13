@@ -1,6 +1,8 @@
 package com.cucumberScript.StepDefs;
 
 import com.cucumberScript.BaseClass;
+import com.cucumberScript.PageObjects.LoginPage;
+import com.cucumberScript.Utils.PropertiesUtil;
 import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,26 +12,28 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Properties;
+
 public class LoginSteps extends BaseClass {
+
+    Properties properties = PropertiesUtil.loadProperties("src/test/resources/config/user.properties");
+
     @Given("User enters valid email in the email field")
     public void userEntersValidUsernameInTheUsernameField() {
-        // Write code here that turns the phrase above into concrete actions
-        WebElement email = BaseClass.driver.findElement(By.xpath("//input[@name=\"email\"]"));
-        email.sendKeys("nishant@yopmail.com");
+        String email = properties.getProperty("email");
+        LoginPage.enterEmail(email);
     }
 
     @And("User enters valid password in the password field")
     public void userEntersValidPasswordInThePasswordField() {
-        // Write code here that turns the phrase above into concrete actions
-        WebElement password = BaseClass.driver.findElement(By.xpath("//input[@name=\"password\"]"));
-        password.sendKeys("Qwerty");
+        String password = properties.getProperty("password");
+        LoginPage.enterEmail(password);
     }
 
     @When("User clicks on login button")
     public void userClicksOnLoginButton() {
         // Write code here that turns the phrase above into concrete actions
-        WebElement loginBtn = BaseClass.driver.findElement(By.xpath("//button[@type=\"submit\"]"));
-        loginBtn.click();
+        LoginPage.pressLoginBtn();
     }
 
     @Then("User is logged in successfully")
