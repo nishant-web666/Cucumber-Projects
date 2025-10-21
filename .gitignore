@@ -1,18 +1,12 @@
-# IntelliJ project files
+# IntelliJ
 .idea/
-*.iml
 
-# Maven target folder (auto-generated build files)
-/target/
+# Build outputs
+target/
 
 # Reports
-target/cucumber-report.html
-target/cucumber.json
+*.html
+*.json
 
-# Local user configuration
-user.properties
-
-# OS generated files
-*.log
-.DS_Store
-Thumbs.db
+# User-specific config
+src/test/resources/config/user.properties
