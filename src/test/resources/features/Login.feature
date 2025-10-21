@@ -7,8 +7,14 @@ Feature: User Login
     When User clicks on login button
     Then User is logged in successfully
 
-  Scenario:  User is not able to login with invalid credentials
-    Given User enters invalid email in the email field
-    And User enters invalid password in the password field
+  Scenario Outline:  User is not able to login with invalid credentials
+    Given User enters invalid <email> in the email field
+    And User enters invalid <password> in the password field
     When User clicks on login button
-    Then Validation error message is displayed
+    Then Validation error <message> is displayed
+    Examples:
+      | email                | password   | message                                     |
+      | nishant@yopmail.com  | nvertyuiop | These credentials do not match our records. |
+      | xtysahnt@yopmail.com  | Qwerty     | These credentials do not match our records. |
+      | nikkxyui@yopmail.com    | wertyuiop | These credentials do not match our records. |
+
