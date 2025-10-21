@@ -1,8 +1,0 @@
-# Ignore user config file
-src/test/resources/config/user.properties
-
-# Ignore build output folder
-target/
-
-# Ignore IntelliJ IDEA project files
-.idea/

@@ -31,4 +31,9 @@ public class LoginPage extends BaseClass{
         BrowserUtils.validateToast(loginErrorToast , expectedText);
         System.out.println(expectedText);
     }
+        BrowserUtils.clickBtn(loginBtn);
+    }
+    public static void clickForgotPassword(){
+        driver.findElement(By.xpath(forgotPasswordLink)).click();
+    }
 }
