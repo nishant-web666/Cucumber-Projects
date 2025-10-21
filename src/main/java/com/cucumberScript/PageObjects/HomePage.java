@@ -9,5 +9,4 @@ public class HomePage extends BaseClass {
     public static void validateLogin(String expectedText){
         BrowserUtils.validateText(homeText, expectedText);
     }
-public class HomePage {
 }
