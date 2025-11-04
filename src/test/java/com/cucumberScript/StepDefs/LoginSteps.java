@@ -3,15 +3,10 @@ package com.cucumberScript.StepDefs;
 import com.cucumberScript.BaseClass;
 import com.cucumberScript.PageObjects.HomePage;
 import com.cucumberScript.PageObjects.LoginPage;
-import com.cucumberScript.PageObjects.LoginPage;
-import com.cucumberScript.Utils.PropertiesUtil;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.util.Properties;
 
 public class LoginSteps extends BaseClass {
 
@@ -29,8 +24,7 @@ public class LoginSteps extends BaseClass {
 
     @When("User clicks on login button")
     public void userClicksOnLoginButton() {
-        // Write code here that turns the phrase above into concrete actions
-        LoginPage.pressLoginBtn();
+        LoginPage.clickLoginBtn();
     }
 
     @Then("User is logged in successfully")
@@ -51,5 +45,15 @@ public class LoginSteps extends BaseClass {
     @Then("^Validation error (.*) is displayed$")
     public void userIsNotLoggedIntoTheApplication(String message) {
         LoginPage.validateInvalidEmailAndPassword(message);
+    }
+
+    @Given("User is logged into the application")
+    public void user_is_logged_into_the_application() {
+        String email = userProperties.getProperty("email");
+        String password = userProperties.getProperty("password");
+        LoginPage.enterEmail(email);
+        LoginPage.enterPassword(password);
+        LoginPage.clickLoginBtn();
+        HomePage.validateLogin("DASHBOARD");
     }
 }
