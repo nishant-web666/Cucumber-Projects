@@ -10,3 +10,6 @@ target/
 
 # User-specific config
 src/test/resources/config/user.properties
+
+# Projects
+CucumberFramework.iml
